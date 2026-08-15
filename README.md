@@ -1,12 +1,12 @@
-# Smart Horizon Investigations
+# Safe Flow Investigations
 
-Smart Horizon — Government-Grade Financial Crime Investigation Platform
+Safe Flow — Government-Grade Financial Crime Investigation Platform
 
-Build a complete, production-quality landing website for Smart Horizon, an AI-powered financial-crime investigation platform developed for the Smart Horizon 2026 hackathon.
+Build a complete, production-quality landing website for Safe Flow, an AI-powered financial-crime investigation platform developed for the Safe Flow 2026 hackathon.
 
 The product's internal name is Digital Investigator.
 
-Smart Horizon is NOT a consumer banking application and NOT a generic fraud checker.
+Safe Flow is NOT a consumer banking application and NOT a generic fraud checker.
 
 It is an autonomous multi-agent financial-crime investigation system that receives suspicious transaction/financial-crime alerts, collects and enriches evidence, analyzes risk and transaction relationships, checks regulatory context, generates explainable investigation findings, prepares investigation reports, and presents recommendations to a human investigator.
 
@@ -70,7 +70,7 @@ BRAND
 
 Brand name:
 
-SMART HORIZON
+Safe Flow
 
 Product:
 
@@ -248,7 +248,7 @@ Minimal institutional navigation.
 
 Left:
 
-SMART HORIZON logo.
+Safe Flow logo.
 
 Center navigation:
 
@@ -302,7 +302,7 @@ Financial Crime Investigation, Reimagined.
 
 Supporting text:
 
-Smart Horizon transforms suspicious financial activity into explainable, investigation-ready intelligence — combining AI agents, risk analytics, transaction graphs and regulatory intelligence.
+Safe Flow transforms suspicious financial activity into explainable, investigation-ready intelligence — combining AI agents, risk analytics, transaction graphs and regulatory intelligence.
 
 Primary CTA:
 
@@ -700,7 +700,7 @@ FATF
 FIU-IND
 DPDP
 
-Do not state that Smart Horizon is officially certified or approved by these organizations.
+Do not state that Safe Flow is officially certified or approved by these organizations.
 
 The section should communicate that the prototype uses verified regulatory documents as a knowledge base.
 
@@ -827,7 +827,7 @@ MANUAL OVERRIDE ENABLED
 
 Then explain:
 
-Smart Horizon is designed to support investigators, not replace authorized decision-makers.
+Safe Flow is designed to support investigators, not replace authorized decision-makers.
 
 Do not claim the AI autonomously blocks accounts.
 
@@ -877,21 +877,21 @@ Use accordion style similar to the Wishpay reference.
 
 Questions:
 
-What is Smart Horizon?
+What is Safe Flow?
 
-Who is Smart Horizon designed for?
+Who is Safe Flow designed for?
 
 How does the Digital Investigator work?
 
 Does the AI make the final financial decision?
 
-How does Smart Horizon explain a risk score?
+How does Safe Flow explain a risk score?
 
 How does regulatory RAG work?
 
 What types of reports can be generated?
 
-Can Smart Horizon integrate with banking systems?
+Can Safe Flow integrate with banking systems?
 
 Use concise answers based on the actual architecture.
 
@@ -958,13 +958,13 @@ Terms
 
 Bottom:
 
-SMART HORIZON
+Safe Flow
 
 Digital Investigator for Financial Crime Intelligence
 
 Add:
 
-© 2026 Smart Horizon
+© 2026 Safe Flow
 
 Do not add fake government seals, certifications, partners or compliance badges.
 
@@ -1061,7 +1061,7 @@ readable typography
 
 IMPORTANT PRODUCT ACCURACY RULES
 
-The website must represent the actual Smart Horizon architecture.
+The website must represent the actual Safe Flow architecture.
 
 The system:
 

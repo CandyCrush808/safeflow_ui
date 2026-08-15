@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu, ShieldCheck, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -37,14 +38,15 @@ export function Navbar() {
           scrolled ? "h-14" : "h-18",
         )}
       >
-        <a href="#top" className="flex items-center gap-2.5 rounded-md focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
-          <span className="flex size-8 items-center justify-center rounded-lg bg-deep text-teal">
-            <ShieldCheck className="size-4.5" aria-hidden />
-          </span>
-          <span className="flex flex-col leading-none">
-            <span className="text-sm font-semibold tracking-[0.16em] text-foreground">SMART HORIZON</span>
-            <span className="eyebrow text-[0.6rem] text-muted-foreground">Digital Investigator</span>
-          </span>
+        <a
+          href="#top"
+          className="rounded-md focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+        >
+          <img
+            src="/public/main_logo.png"
+            alt="Logo"
+            className="h-9 w-auto object-contain"
+          />
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
@@ -66,25 +68,30 @@ export function Navbar() {
           >
             Documentation
           </a>
-          <a
-            href="#cta"
+
+          <Link
+            to="/sign-in"
             className="rounded px-3 py-2 text-sm font-medium text-foreground transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
           >
             Sign In
-          </a>
+          </Link>
+
           <Button asChild size="sm" className="rounded-xl">
-            <a href="#cta">Launch Investigator</a>
+            <Link to="/sign-in">Launch Investigator</Link>
           </Button>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
           <Button asChild size="sm" className="rounded-xl">
-            <a href="#cta">Launch</a>
+            <Link to="/sign-in">Launch</Link>
           </Button>
+
           <button
+            id="mobile-nav-button"
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
             className="flex size-9 items-center justify-center rounded-lg border border-border text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
           >
@@ -94,24 +101,42 @@ export function Navbar() {
       </div>
 
       <div
+        id="mobile-nav"
         className={cn(
           "overflow-hidden border-t border-border bg-background transition-[max-height,opacity] duration-300 lg:hidden",
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
         )}
       >
-        <nav aria-label="Mobile" className="container-hz flex flex-col gap-1 py-4">
-          {[...navItems, { label: "Documentation", href: "#faq" }, { label: "Sign In", href: "#cta" }].map(
-            (item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                {item.label}
-              </a>
-            ),
-          )}
+        <nav
+          aria-label="Mobile"
+          className="container-hz flex flex-col gap-1 py-4"
+        >
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              {item.label}
+            </a>
+          ))}
+
+          <a
+            href="#faq"
+            onClick={() => setOpen(false)}
+            className="rounded-lg px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          >
+            Documentation
+          </a>
+
+          <Link
+            to="/sign-in"
+            onClick={() => setOpen(false)}
+            className="rounded-lg px-2 py-2.5 text-sm font-semibold text-violet transition-colors hover:bg-muted"
+          >
+            Sign In / Launch
+          </Link>
         </nav>
       </div>
     </header>

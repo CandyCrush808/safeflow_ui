@@ -75,7 +75,7 @@
 }
 
 :root {
-  --radius: 1.5rem;
+  --radius: 0.9rem;
 
   /* Institutional palette */
   --navy: oklch(0.14 0.035 305);
@@ -211,31 +211,9 @@
   }
 }
 
-@keyframes hz-pulse {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.35);
-  }
-}
-
 @keyframes hz-dash {
   to {
     stroke-dashoffset: -24;
-  }
-}
-
-@keyframes hz-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
   }
 }
 
@@ -245,15 +223,9 @@
 .hz-reveal.is-visible {
   animation: hz-reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.hz-pulse {
-  animation: hz-pulse 3s ease-in-out infinite;
-}
 .hz-dash {
   stroke-dasharray: 4 8;
   animation: hz-dash 1.6s linear infinite;
-}
-.hz-float {
-  animation: hz-float 7s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
