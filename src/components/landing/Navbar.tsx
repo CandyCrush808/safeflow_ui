@@ -66,7 +66,7 @@ export function Navbar() {
             href="#faq"
             className="rounded px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
           >
-            Documentation
+            FAQ
           </a>
 
           <Link
@@ -127,7 +127,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="rounded-lg px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
-            Documentation
+            FAQ
           </a>
 
           <Link

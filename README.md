@@ -84,7 +84,7 @@ Alternative supporting line:
 
 Turn suspicious financial activity into explainable, investigation-ready intelligence.
 
-Use a professional Horizon shield/logo if an existing logo asset is available.
+Use a professionalSafeFlowshield/logo if an existing logo asset is available.
 
 Do not redesign the logo unless necessary.
 

@@ -39,7 +39,7 @@ export function ProblemSection() {
 
         <Reveal delay={200}>
           <p className="mt-12 text-center text-xl font-medium tracking-tight text-gov md:text-2xl">
-            Horizon connects the investigation.
+           SafeFlow connects the investigation.
           </p>
         </Reveal>
       </div>
