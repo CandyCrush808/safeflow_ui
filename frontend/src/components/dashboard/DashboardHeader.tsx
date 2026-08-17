@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Bell, CircleUser, ChevronDown, ShieldCheck, FileText, Lock, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useRole, type RoleId } from "@/context/RoleContext";
@@ -40,6 +41,8 @@ export function DashboardHeader({
 
         {/* Right side - Notifications, Role Switcher and Profile */}
         <div className="flex items-center gap-2.5 sm:gap-3.5">
+          <ThemeToggle compact />
+
           {/* Quick Role Switcher for Demo */}
           <div className="relative">
             <button
@@ -47,11 +50,11 @@ export function DashboardHeader({
               className={cn(
                 "flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition-all duration-150",
                 "hover:bg-muted/60 hover:border-border",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet/20",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               )}
               aria-label="Switch role"
             >
-              <span className="size-2 rounded-full bg-teal animate-pulse" />
+              <span className="size-2 rounded-full bg-primary animate-pulse" />
               <span className="capitalize">{activeRole} View</span>
               <ChevronDown className="size-3.5 text-muted-foreground" />
             </button>
@@ -79,7 +82,7 @@ export function DashboardHeader({
                         className={cn(
                           "flex w-full items-center justify-between rounded-xl px-3 py-2 text-xs font-medium transition-colors",
                           isSelected
-                            ? "bg-violet/10 text-violet font-semibold"
+                            ? "bg-primary/10 text-primary font-semibold"
                             : "text-foreground hover:bg-muted/60",
                         )}
                       >
@@ -87,7 +90,7 @@ export function DashboardHeader({
                           <RoleIcon className="size-3.5" />
                           <span>{item.label}</span>
                         </div>
-                        {isSelected && <Check className="size-3 text-violet" />}
+                        {isSelected && <Check className="size-3 text-primary" />}
                       </button>
                     );
                   })}
@@ -119,7 +122,7 @@ export function DashboardHeader({
               <p className="text-xs font-semibold text-foreground leading-tight">{displayUserName}</p>
               <p className="text-[11px] text-muted-foreground capitalize leading-tight mt-0.5">{activeRole}</p>
             </div>
-            <div className="flex size-7 items-center justify-center rounded-lg bg-navy text-teal font-bold text-xs shadow-xs">
+            <div className="flex size-7 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-xs shadow-xs">
               {displayUserName.charAt(0)}
             </div>
           </div>

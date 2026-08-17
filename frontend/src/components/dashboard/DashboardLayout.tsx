@@ -25,7 +25,7 @@ export function DashboardLayout({
   const activeUserName = userName || user.name;
 
   return (
-    <div className="flex min-h-screen bg-offwhite/40 text-foreground selection:bg-violet/20 selection:text-violet">
+    <div className="flex min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary">
       {/* Sidebar */}
       <Sidebar open={sidebarOpen} onOpenChange={setSidebarOpen} userRole={activeRole} />
 

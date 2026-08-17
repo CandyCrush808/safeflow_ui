@@ -57,8 +57,8 @@ export function Eyebrow({ children, tone = "light" }: { children: ReactNode; ton
       className={cn(
         "eyebrow inline-flex items-center gap-2 rounded-full border px-3 py-1.5",
         tone === "light"
-          ? "border-border bg-offwhite text-gov"
-          : "border-white/15 bg-white/5 text-teal",
+          ? "border-border bg-muted text-accent-foreground"
+          : "border-section-emphasis-border bg-section-emphasis-surface text-section-emphasis-accent",
       )}
     >
       <span className="size-1.5 rounded-full bg-current" aria-hidden />
@@ -91,13 +91,13 @@ export function SectionHeading({
       <h2
         className={cn(
           "text-3xl leading-tight font-semibold tracking-tight text-balance md:text-[2.6rem]",
-          tone === "dark" ? "text-white" : "text-foreground",
+          tone === "dark" ? "text-section-emphasis-foreground" : "text-foreground",
         )}
       >
         {title}
       </h2>
       {description ? (
-        <p className={cn("text-base leading-relaxed", tone === "dark" ? "text-lavender/75" : "text-muted-foreground")}>
+        <p className={cn("text-base leading-relaxed", tone === "dark" ? "text-section-emphasis-muted" : "text-muted-foreground")}>
           {description}
         </p>
       ) : null}

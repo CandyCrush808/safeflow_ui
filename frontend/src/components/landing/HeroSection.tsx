@@ -10,7 +10,7 @@ export function HeroSection() {
   const score = useCountUp(demoCase.risk.value, visible);
 
   return (
-    <section id="top" className="relative overflow-hidden bg-offwhite pt-32 pb-20 md:pt-40 md:pb-28">
+    <section id="top" className="relative overflow-hidden bg-background pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="container-hz relative">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
           <Reveal>
@@ -53,7 +53,7 @@ export function HeroSection() {
         <Reveal delay={380} className="mt-16">
           <div ref={ref} className="relative mx-auto max-w-5xl">
             <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-              <div className="flex items-center justify-between border-b border-border bg-offwhite px-5 py-3">
+              <div className="flex items-center justify-between border-b border-border bg-muted px-5 py-3">
                 <Mono className="text-muted-foreground">CASE {demoCase.id}</Mono>
                 <Mono className="text-muted-foreground">INVESTIGATION WORKSPACE</Mono>
               </div>
@@ -77,7 +77,7 @@ export function HeroSection() {
                     </div>
                   </div>
 
-                  <div className="rounded-xl border border-border bg-offwhite p-4">
+                  <div className="rounded-xl border border-border bg-muted p-4">
                     <Mono className="text-muted-foreground">ALERT</Mono>
                     <p className="mt-1 text-sm font-medium">{demoCase.alert}</p>
                   </div>

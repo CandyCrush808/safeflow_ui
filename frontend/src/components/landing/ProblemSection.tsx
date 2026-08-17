@@ -1,6 +1,13 @@
 import { Reveal, SectionHeading } from "./shared";
 
-const journey = ["Alert", "Evidence", "Analysis", "Compliance", "Investigation", "Decision"];
+const journey = [
+  "Alert",
+  "Evidence",
+  "Analysis",
+  "Compliance",
+  "Investigation",
+  "Decision",
+];
 
 export function ProblemSection() {
   return (
@@ -17,20 +24,15 @@ export function ProblemSection() {
         <Reveal delay={120} className="mt-14">
           <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
             {journey.map((step, i) => (
-              <li key={step} className="relative">
-                {i < journey.length - 1 ? (
-                  <span
-                    className="absolute top-1/2 -right-2 hidden h-px w-4 bg-border lg:block"
-                    aria-hidden
-                  >
-                    <span className="block h-px w-full origin-left bg-violet/50 hz-dash" />
-                  </span>
-                ) : null}
-                <div className="group flex h-full flex-col gap-2 rounded-3xl border border-border bg-card p-5 transition-colors duration-300 hover:border-violet/40">
+              <li key={step}>
+                <div className="group flex h-full flex-col gap-2 rounded-3xl border border-border bg-card p-5 transition-colors duration-300 hover:border-violet/40 hover:bg-violet/10">
                   <span className="font-mono text-[0.65rem] tracking-[0.14em] text-muted-foreground">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-sm font-semibold tracking-wide uppercase">{step}</span>
+
+                  <span className="text-sm font-semibold tracking-wide uppercase">
+                    {step}
+                  </span>
                 </div>
               </li>
             ))}
@@ -39,7 +41,7 @@ export function ProblemSection() {
 
         <Reveal delay={200}>
           <p className="mt-12 text-center text-xl font-medium tracking-tight text-gov md:text-2xl">
-           SafeFlow connects the investigation.
+            SafeFlow connects the investigation.
           </p>
         </Reveal>
       </div>

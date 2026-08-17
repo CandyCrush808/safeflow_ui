@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -29,7 +30,7 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 border-b transition-all duration-300",
         scrolled
           ? "border-border bg-background/85 backdrop-blur-md"
-          : "border-transparent bg-offwhite",
+          : "border-transparent bg-background",
       )}
     >
       <div
@@ -62,6 +63,8 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
+          <ThemeToggle compact />
+
           <a
             href="#faq"
             className="rounded px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
@@ -82,6 +85,8 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle compact />
+
           <Button asChild size="sm" className="rounded-xl">
             <Link to="/sign-in">Launch</Link>
           </Button>
@@ -133,7 +138,7 @@ export function Navbar() {
           <Link
             to="/sign-in"
             onClick={() => setOpen(false)}
-            className="rounded-lg px-2 py-2.5 text-sm font-semibold text-violet transition-colors hover:bg-muted"
+            className="rounded-lg px-2 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-muted"
           >
             Sign In / Launch
           </Link>
