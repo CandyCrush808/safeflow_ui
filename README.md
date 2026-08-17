@@ -1,1202 +1,1070 @@
-# Safe Flow Investigations
+# 🛡️ Smart Horizon
 
-Safe Flow — Government-Grade Financial Crime Investigation Platform
+### AI-Powered Multi-Agent Financial Crime Investigation Platform
 
-Build a complete, production-quality landing website for Safe Flow, an AI-powered financial-crime investigation platform developed for the Safe Flow 2026 hackathon.
+> **AI recommends. Human decides. System documents.**
 
-The product's internal name is Digital Investigator.
+Smart Horizon is an autonomous financial-crime investigation platform designed to help investigators analyze suspicious financial activity, collect contextual evidence, assess risk, explain why a transaction was flagged, retrieve relevant regulatory information, generate investigation reports, and support human decision-making.
 
-Safe Flow is NOT a consumer banking application and NOT a generic fraud checker.
+The system is designed around a **human-in-the-loop** investigation workflow rather than allowing AI to independently make material financial decisions.
 
-It is an autonomous multi-agent financial-crime investigation system that receives suspicious transaction/financial-crime alerts, collects and enriches evidence, analyzes risk and transaction relationships, checks regulatory context, generates explainable investigation findings, prepares investigation reports, and presents recommendations to a human investigator.
+---
 
-The central product principle is:
+## 🎯 Problem
 
-AI recommends. Human decides. System documents.
+Traditional financial fraud systems primarily focus on **detecting suspicious transactions and generating alerts**.
 
-The website must communicate trust, institutional credibility, explainability, security, compliance, and technological sophistication.
+The major challenge begins after an alert is generated:
 
-DESIGN REFERENCE
+* Investigators must manually collect transaction history.
+* Customer and KYC information must be reviewed.
+* Related accounts and transaction relationships must be investigated.
+* Risk factors must be understood.
+* Regulatory requirements must be checked.
+* Investigation reports must be prepared.
+* Decisions and evidence must be documented.
 
-Use the provided Wishpay Finance Landing Page screenshot as a visual/layout reference.
+Smart Horizon focuses on this investigation layer.
 
-Do NOT copy Wishpay branding, text, illustrations, logo, or exact layouts.
+### Our Goal
 
-Borrow only these high-level principles:
+Transform:
 
-Minimal premium fintech aesthetic
+```text
+Suspicious Alert
+      ↓
+Manual Investigation
+      ↓
+Multiple Systems
+      ↓
+Manual Evidence Collection
+      ↓
+Manual Analysis
+      ↓
+Manual Report
+      ↓
+Human Decision
+```
 
-Strong centered hero typography
+into:
 
-Generous whitespace
-
-Editorial section hierarchy
-
-Asymmetric feature cards
-
-Large visual product mockups
-
-Alternating light and dark sections
-
-Purple gradient accents
-
-Floating interface elements
-
-Clear CTA hierarchy
-
-Elegant typography
-
-Strong visual rhythm
-
-Transform that aesthetic into a more serious government / financial-regulatory / institutional technology visual language.
-
-The final website should feel like:
-
-Government Digital Platform + Financial Intelligence System + Premium Enterprise SaaS
-
-It should NOT feel like:
-
-a banking app
-
-a crypto website
-
-a flashy AI startup
-
-a gaming dashboard
-
-a marketing-heavy consumer fintech app
-
-BRAND
-
-Brand name:
-
-Safe Flow
-
-Product:
-
+```text
+Suspicious Alert
+      ↓
 Digital Investigator
+      ↓
+Evidence Collection
+      ↓
+Risk + Graph Analysis
+      ↓
+XAI + Regulatory RAG
+      ↓
+AI Investigation
+      ↓
+Report Generation
+      ↓
+Human Approval
+      ↓
+Audit Trail
+```
+
+---
+
+# 🧠 System Architecture
+
+```text
+                    BANK / PAYMENT ECOSYSTEM
+          CBS • UPI • IMPS • NEFT • RTGS • Cards
+                              │
+                              ▼
+                     DATA / ALERT INPUT
+                              │
+                              ▼
+                        CASE MANAGER
+                              │
+                              ▼
+                    ORCHESTRATOR AGENT
+                              │
+             ┌────────────────┼────────────────┐
+             ▼                ▼                ▼
+        DATA AGENT       RISK AGENT       COMPLIANCE AGENT
+             │                │                │
+       Transaction       ML / XAI          RAG / Regulations
+       Customer          Graph             KYC / AML
+       KYC / Device      Risk Signals      PEP / Sanctions
+             └────────────────┼────────────────┘
+                              ▼
+                     EVIDENCE PACKAGE
+                              │
+                ┌─────────────┴─────────────┐
+                ▼                           ▼
+             XAI ENGINE                 RAG ENGINE
+                │                           │
+          SHAP / Features           RBI / NPCI / PMLA
+                │                    FATF / FIU-IND
+                └─────────────┬─────────────┘
+                              ▼
+                    REASON / REPORT AGENT
+                              │
+                              ▼
+                    HUMAN INVESTIGATOR
+                              │
+                    ┌─────────┼─────────┐
+                    ▼         ▼         ▼
+                 APPROVE   ESCALATE   REQUEST
+                              │
+                              ▼
+                         AUDIT TRAIL
+```
+
+This architecture combines the source implementation plan's score/context/reason/decision pipeline with the expanded data, risk, compliance and reporting agents.
+
+---
+
+# 🚀 Implementation Roadmap
+
+## Phase 0 — Project Foundation
+
+### Objective
+
+Establish the common technical and product foundation before parallel development begins.
+
+### Tasks
+
+* [ ] Create GitHub repository
+* [ ] Define team responsibilities
+* [ ] Define project architecture
+* [ ] Freeze Evidence Package JSON schema
+* [ ] Define API contracts
+* [ ] Set up environment variables
+* [ ] Set up frontend project
+* [ ] Set up backend project
+* [ ] Set up database
+* [ ] Create project documentation
+
+### Deliverables
+
+```text
+Repository
+Architecture
+Evidence Schema
+API Contract
+Development Environment
+Initial UI Shell
+```
+
+The implementation plan specifically recommends freezing the Evidence Package schema at the beginning because it acts as the contract between the system components.
+
+---
+
+# Phase 1 — Product UI & Design System
+
+### Objective
+
+Build the complete visual foundation of Smart Horizon.
+
+### Frontend
 
-Possible hero tagline:
-
-Financial Crime Investigation, Reimagined.
-
-Alternative supporting line:
-
-Turn suspicious financial activity into explainable, investigation-ready intelligence.
-
-Use a professionalSafeFlowshield/logo if an existing logo asset is available.
-
-Do not redesign the logo unless necessary.
-
-VISUAL LANGUAGE
-
-Primary colors
-
-Use a restrained institutional palette:
-
-Deep Navy: #0B0714
-
-Dark Purple: #241044
-
-Government Purple: #4E1F6E
-
-Electric Violet: #7138C8
-
-Soft Lavender: #EDE7F7
-
-Teal Accent: #71F2E2
-
-White: #FFFFFF
-
-Off White: #F7F7F9
-
-Muted Gray: #6B6873
-
-Border Gray: #E5E2EA
-
-Risk colors:
-
-LOW:
-#2E8B57
-
-MEDIUM:
-#C58A00
-
-HIGH:
-#D97706
-
-CRITICAL:
-#B42318
-
-Do not overuse gradients.
-
-Use gradients only for:
-
-hero visual accents
-
-selected cards
-
-CTA backgrounds
-
-subtle glow effects
-
-TYPOGRAPHY
-
-Use a professional modern sans-serif.
-
-Preferred:
-
-Plus Jakarta Sans
-
-Inter
-
-IBM Plex Sans
-
-Use a monospace font only for:
-
-case IDs
-
-transaction IDs
-
-timestamps
-
-model metadata
-
-audit logs
-
-technical values
-
-Suggested monospace:
-
-JetBrains Mono.
-
-Typography should feel similar to a government digital service mixed with a premium enterprise platform.
-
-Avoid overly futuristic fonts.
-
-GLOBAL UI PRINCIPLES
-
-The interface must have:
-
-large whitespace
-
-20–28px card radius
-
-thin borders
-
-subtle shadows
-
-very restrained glassmorphism
-
-strong typography
-
-subtle hover states
-
-smooth scroll
-
-small micro-interactions
-
-no excessive animation
-
-no huge glowing effects
-
-no excessive rounded pills
-
-no unnecessary gradients
-
-Use a maximum content width around:
-
-1200–1280px.
-
-Maintain excellent desktop layout and responsive mobile behavior.
-
-WEBSITE STRUCTURE
-
-Create each major section as a separate reusable React component.
-
-Do NOT place the entire landing page in one component.
-
-Use this structure:
-
-src/components/landing/
-
-Navbar.tsx
-HeroSection.tsx
-TrustBar.tsx
-ProblemSection.tsx
-InvestigatorSection.tsx
-AgentArchitecture.tsx
-RiskIntelligence.tsx
-ExplainabilitySection.tsx
-ComplianceSection.tsx
-InvestigationFlow.tsx
-HumanDecisionSection.tsx
-ThreatWatch.tsx
-FAQSection.tsx
-FinalCTA.tsx
-Footer.tsx
-
-Each section must be independently editable.
-
-01 — NAVBAR
-
-Create:
-
-Navbar.tsx
-
-Minimal institutional navigation.
-
-Left:
-
-Safe Flow logo.
-
-Center navigation:
-
-Platform
-Investigation
-Intelligence
-Compliance
-About
-
-Right:
-
-Documentation
-Sign In
-Launch Investigator
-
-Use a white/off-white background with a very subtle bottom border.
-
-On scroll:
-
-slightly reduce navbar height
-
-add subtle backdrop blur
-
-preserve readability
-
-Mobile:
-
-hamburger menu
-
-compact logo
-
-Launch Investigator CTA
-
-02 — HERO SECTION
-
-Create:
-
-HeroSection.tsx
-
-This is the most important visual section.
-
-Use a clean off-white background.
-
-Top small institutional badge:
-
-FINANCIAL CRIME INTELLIGENCE PLATFORM
-
-Main headline:
-
-Financial Crime Investigation, Reimagined.
-
-Supporting text:
-
-Safe Flow transforms suspicious financial activity into explainable, investigation-ready intelligence — combining AI agents, risk analytics, transaction graphs and regulatory intelligence.
-
-Primary CTA:
-
-Launch Investigator
-
-Secondary CTA:
-
-Explore the Platform
-
-Below the CTA, add subtle institutional metadata:
-
-AI-ASSISTED INVESTIGATION
-HUMAN-IN-THE-LOOP
-AUDIT-READY
-
-HERO VISUAL
-
-Instead of a banking card like Wishpay, create a premium floating Digital Investigator interface preview.
-
-Show a simplified case dashboard:
-
-CASE FC-2026-00421
-
+* [ ] Design system
+* [ ] Typography
+* [ ] Color tokens
+* [ ] Dark mode
+* [ ] Light mode
+* [ ] Responsive layout
+* [ ] Buttons
+* [ ] Cards
+* [ ] Badges
+* [ ] Tables
+* [ ] Modals
+* [ ] Loading states
+* [ ] Empty states
+* [ ] Error states
+
+### Landing Page
+
+* [ ] Navbar
+* [ ] Hero
+* [ ] Problem section
+* [ ] Investigation section
+* [ ] Agent architecture
+* [ ] Risk intelligence
+* [ ] Explainability
+* [ ] Graph section
+* [ ] Compliance
+* [ ] Investigation workflow
+* [ ] Reports
+* [ ] Human decision
+* [ ] Threat watch
+* [ ] FAQ
+* [ ] CTA
+* [ ] Footer
+
+### Deliverable
+
+```text
+Complete Smart Horizon public website
+```
+
+---
+
+# Phase 2 — Authentication & Role-Based Access
+
+### Objective
+
+Create the entry point into the investigation platform.
+
+### User Flow
+
+```text
+Landing Page
+      ↓
+Access Platform
+      ↓
+Select Role
+      ↓
+Login
+      ↓
+MFA
+      ↓
+Role Dashboard
+```
+
+### Roles
+
+```text
+Investigator
+    ↓
+Investigates suspicious cases
+
+Manager
+    ↓
+Reviews / approves decisions
+
+Administrator
+    ↓
+Controls platform / security
+```
+
+### Tasks
+
+* [ ] Role selection
+* [ ] Login interface
+* [ ] MFA interface
+* [ ] Role-based navigation
+* [ ] Protected routes
+* [ ] Logout
+* [ ] Unauthorized page
+
+---
+
+# Phase 3 — Investigation Dashboard
+
+### Objective
+
+Create the primary workspace for investigators.
+
+### Dashboard
+
+```text
+Dashboard
+│
+├── Risk Overview
+├── Active Cases
+├── Critical Cases
+├── Cases Resolved
+├── Risk Trend
+├── Case Distribution
+└── Recent Investigations
+```
+
+### Case Queue
+
+```text
+Case Queue
+│
+├── Case ID
+├── Customer
+├── Transaction
+├── Risk Score
+├── Priority
+├── Status
+├── SLA
+└── Assigned Investigator
+```
+
+### Features
+
+* [ ] Search
+* [ ] Filter
+* [ ] Sort
+* [ ] Priority
+* [ ] Risk level
+* [ ] Case status
+* [ ] SLA timer
+
+The architecture identifies the case queue, priority, SLA timer and lifecycle as core case-management functionality.
+
+---
+
+# Phase 4 — Case Investigation
+
+### Objective
+
+Create the main investigation workspace.
+
+```text
+Case
+│
+├── Overview
+├── Evidence
+├── Risk
+├── Graph
+├── Timeline
+├── Compliance
+├── AI Investigation
+├── Reports
+└── Approval
+```
+
+### Case Overview
+
+* [ ] Customer information
+* [ ] Transaction information
+* [ ] Alert reason
+* [ ] Case status
+* [ ] Risk level
+* [ ] Assigned investigator
+
+### Evidence
+
+* [ ] Transaction history
+* [ ] Customer profile
+* [ ] KYC/CDD information
+* [ ] Device signals
+* [ ] IP signals
+* [ ] Location
+* [ ] Velocity
+* [ ] Previous cases
+
+### Deliverable
+
+```text
+Complete Case Investigation UI
+```
+
+---
+
+# Phase 5 — Risk Intelligence & Explainability
+
+### Objective
+
+Explain **why the system considers a case suspicious**.
+
+### Risk
+
+```text
 Risk Score
-86 / 100
+     ↓
+0 ─────────────── 100
+
+LOW
+MEDIUM
 HIGH
+CRITICAL
+```
 
-Alert:
-Unusual transaction velocity
+### Explainability
 
-Then small evidence chips:
+* [ ] SHAP feature contribution
+* [ ] Feature importance
+* [ ] Supporting evidence
+* [ ] Counter-evidence
+* [ ] Counterfactual explanation
+* [ ] Natural-language explanation
+* [ ] Confidence score
 
-7 transactions / 4 min
-3 connected accounts
-New device
-Geo anomaly
+### Example
+
+```text
+Why Flagged?
+
++ High transaction velocity
++ Fan-out transaction pattern
++ Unusual location
++ Device reused across accounts
+
+Confidence: 92%
+```
+
+The architecture requires each case to expose risk score, contributing factors, supporting/counter evidence and explainability.
+
+---
+
+# Phase 6 — Transaction Graph Intelligence
+
+### Objective
+
+Visualize relationships between accounts and transactions.
+
+### Graph
+
+```text
+Account A
+    │
+    ├──── ₹50,000 ────→ Account B
+    │                       │
+    │                       └──→ Account C
+    │
+    └──── ₹75,000 ────→ Account D
+```
+
+### Detection
+
+* [ ] Fan-in
+* [ ] Fan-out
+* [ ] Circular transactions
+* [ ] Transaction chains
+* [ ] Rapid turnover
+* [ ] Suspicious relationships
 
-On the right side show a tiny transaction graph.
+### Frontend
 
-Use subtle purple and teal highlights.
+* [ ] Interactive graph
+* [ ] Zoom
+* [ ] Pan
+* [ ] Node details
+* [ ] Edge details
+* [ ] Risk highlighting
+* [ ] Transaction amount display
 
-The visual should look like an actual enterprise investigation system.
+The architecture identifies transaction-graph investigation as a critical capability.
 
-Add very subtle floating labels:
+---
 
-RISK ANALYSIS
-GRAPH INTELLIGENCE
-RAG COMPLIANCE
-XAI
+# Phase 7 — Multi-Agent Investigation Engine
 
-03 — TRUST BAR
+### Objective
 
-Create:
+Connect the investigation workflow into specialized agents.
 
-TrustBar.tsx
+```text
+Alert
+  ↓
+Orchestrator
+  ↓
+┌──────────────┬───────────────┬────────────────┐
+│              │               │
+Data Agent     Risk Agent      Compliance Agent
+│              │               │
+Evidence       ML + Graph      RAG
+│              │               │
+└──────────────┴───────────────┘
+                ↓
+          Reason Agent
+                ↓
+          Report Agent
+                ↓
+        Decision Layer
+```
 
-Immediately under hero.
+### Agents
 
-Use small institutional statements rather than fake company logos.
+#### Orchestrator Agent
 
-Example:
+* [ ] Receive case
+* [ ] Decompose investigation
+* [ ] Coordinate agents
+* [ ] Validate outputs
+* [ ] Maintain case state
 
-BUILT FOR
+#### Data Agent
 
-Financial Crime Analysts
-Compliance Teams
-Risk Operations
-Investigation Workflows
+* [ ] Transaction history
+* [ ] Customer information
+* [ ] KYC
+* [ ] Device
+* [ ] IP
+* [ ] Geo
+* [ ] Previous cases
 
-Then a thin divider.
+#### Risk Agent
 
-Do NOT invent partnerships or government endorsements.
+* [ ] Risk score
+* [ ] ML prediction
+* [ ] Velocity
+* [ ] Geo-velocity
+* [ ] Graph patterns
+* [ ] XAI
 
-Do NOT claim official RBI/NPCI approval.
+#### Compliance Agent
 
-04 — PROBLEM SECTION
+* [ ] KYC/CDD/EDD
+* [ ] PEP
+* [ ] Sanctions
+* [ ] AML
+* [ ] Regulatory retrieval
 
-Create:
+#### Reason Agent
 
-ProblemSection.tsx
+* [ ] Findings
+* [ ] Evidence reasoning
+* [ ] Counter-evidence
+* [ ] Investigation hypotheses
+* [ ] Recommended next steps
 
-Background:
+#### Report Agent
 
-Very light gray/off-white.
+* [ ] Investigation summary
+* [ ] Timeline
+* [ ] STR draft
+* [ ] CTR/FMR support
+* [ ] Audit summary
 
-Heading:
+The architecture defines these specialized agent responsibilities explicitly.
 
-Detection is only the beginning.
+---
 
-Supporting text:
+# Phase 8 — RAG & Regulatory Intelligence
 
-Modern financial-crime systems can generate alerts. The difficult part begins after the alert — collecting evidence, understanding relationships, checking regulatory context, explaining risk and documenting the investigation.
+### Objective
 
-Create a horizontal investigation journey:
+Ground regulatory responses in verified sources.
 
-ALERT
-↓
-EVIDENCE
-↓
-ANALYSIS
-↓
-COMPLIANCE
-↓
-INVESTIGATION
-↓
-DECISION
+### Knowledge Base
 
-Use subtle animated connection lines.
-
-Then introduce:
-
-Horizon connects the investigation.
-
-05 — INVESTIGATOR SECTION
-
-Create:
-
-InvestigatorSection.tsx
-
-This should visually resemble the "strategic choice" section from the Wishpay reference.
-
-Use a central Digital Investigator shield/abstract AI visual.
-
-Around it place four capabilities:
-
-01
-DATA INTELLIGENCE
-
-Transaction history
-Customer profile
-Device/IP
-Geo signals
-
-02
-RISK INTELLIGENCE
-
-Risk scoring
-Anomaly detection
-Velocity analysis
-Graph patterns
-
-03
-COMPLIANCE INTELLIGENCE
-
-KYC/CDD/EDD
-PEP & sanctions
-RBI/NPCI
-PMLA/FATF
-
-04
-INVESTIGATION INTELLIGENCE
-
-AI findings
-Evidence linking
-Case reasoning
-Recommended actions
-
-Headline:
-
-One investigation. Every signal.
-
-06 — MULTI-AGENT ARCHITECTURE
-
-Create:
-
-AgentArchitecture.tsx
-
-Use a dark purple background inspired by the dark Wishpay section.
-
-Heading:
-
-One case. Multiple intelligent agents.
-
-Show a clean visual architecture:
-
-                ORCHESTRATOR
-
-    ┌────────────┼────────────┐
-    ↓            ↓            ↓
-
- DATA AGENT   RISK AGENT   COMPLIANCE AGENT
-
-    └────────────┼────────────┘
-                 ↓
-
-            REASON AGENT
-                 ↓
-            REPORT AGENT
-                 ↓
-           HUMAN ANALYST
-
-
-Each agent should have a short explanation.
-
-Orchestrator:
-Decomposes and coordinates investigation tasks.
-
-Data Agent:
-Collects and normalizes evidence.
-
-Risk Agent:
-Calculates risk and detects suspicious patterns.
-
-Compliance Agent:
-Retrieves and grounds regulatory context.
-
-Reason Agent:
-Converts evidence into investigator reasoning.
-
-Report Agent:
-Creates investigation-ready documentation.
-
-Use animated connection lines, but keep animations subtle.
-
-07 — RISK INTELLIGENCE
-
-Create:
-
-RiskIntelligence.tsx
-
-White background.
-
-Headline:
-
-Risk you can see.
-
-Create a large dashboard card.
-
-Display:
-
-RISK SCORE
-
-86 / 100
-
-HIGH
-
-Then show feature contribution bars:
-
-Transaction Pattern
-+24
-
-Graph Context
-+18
-
-Device / IP
-+12
-
-Location
-+09
-
-Account Profile
-+07
-
-Regulatory Signals
-+04
-
-Use SHAP-inspired visualization.
-
-Add text:
-
-Every risk score comes with an explanation.
-
-Do not claim a specific model accuracy unless real measured results are available.
-
-08 — EXPLAINABILITY SECTION
-
-Create:
-
-ExplainabilitySection.tsx
-
-Use a split layout.
-
-Left:
-
-Headline:
-
-Don't just flag it. Explain it.
-
-Right:
-
-Investigation evidence panel.
-
-Show:
-
-WHY FLAGGED
-
-Supporting Evidence
-
-✓ 7 transactions in 4 minutes
-✓ 3 connected accounts
-✓ New device detected
-
-Counter Evidence
-
-✓ Previous legitimate high-value activity
-
-Model Signal
-
-High transaction velocity
-
-AI Assessment
-
-High-risk activity pattern requiring analyst review.
-
-Then small labels:
-
-SHAP
-EVIDENCE
-COUNTER-EVIDENCE
-CONFIDENCE
-
-The visual should communicate explainable AI rather than black-box AI.
-
-09 — TRANSACTION GRAPH
-
-Create:
-
-Inside either ExplainabilitySection or a dedicated GraphSection.tsx.
-
-Show a sophisticated but minimal network visualization.
-
-Nodes:
-
-Account A001
-Account A004
-Account A008
-Account A012
-
-Connections:
-
-₹ amount
-timestamp
-transaction direction
-
-Highlight suspicious patterns.
-
-Labels:
-
-FAN-OUT DETECTED
-CONNECTED ENTITY
-RAPID TURNOVER
-
-Headline:
-
-Follow the money.
-
-Supporting text:
-
-Transaction relationships reveal patterns that isolated transactions cannot.
-
-Use animated node pulses very subtly.
-
-10 — COMPLIANCE INTELLIGENCE
-
-Create:
-
-ComplianceSection.tsx
-
-Background:
-
-Very light lavender.
-
-Headline:
-
-Grounded in regulatory intelligence.
-
-Show a RAG interface.
-
-Example:
-
-REGULATORY FINDING
-
-Requirement identified
-
-KYC / AML
-
-Source
-
-Verified regulatory document
-
-Confidence
-
-0.94
-
-Then:
-
-Every regulatory statement should be traceable to its source.
-
-Show small source cards:
-
+```text
 RBI
 NPCI
 PMLA
 FATF
 FIU-IND
-DPDP
+Bank Policies
+```
 
-Do not state that Safe Flow is officially certified or approved by these organizations.
+### Pipeline
 
-The section should communicate that the prototype uses verified regulatory documents as a knowledge base.
+```text
+Regulatory Documents
+        ↓
+Document Processing
+        ↓
+Chunking
+        ↓
+Embeddings
+        ↓
+Vector Database
+        ↓
+Semantic Retrieval
+        ↓
+LLM
+        ↓
+Answer + Citation
+```
 
-11 — INVESTIGATION FLOW
+### Frontend
 
-Create:
+```text
+Compliance Panel
 
-InvestigationFlow.tsx
+Regulatory Finding
+        ↓
+Source
+        ↓
+Citation
+        ↓
+View Source
+```
 
-Use a horizontal timeline.
+RAG is identified in the architecture as a mandatory backbone for grounding regulatory answers and allowing regulatory documents to be updated without retraining the LLM.
 
-01
-Alert Received
+---
 
-02
-Case Created
+# Phase 9 — AI Investigation & Reports
 
-03
-Evidence Collected
+### Objective
 
-04
-Risk Analyzed
+Turn structured evidence into an investigator-ready explanation.
 
-05
-Regulatory Context Checked
+### AI Investigation
 
-06
-AI Investigation
-
-07
-Human Review
-
-08
-Case Resolution
-
-Use elegant numbered nodes.
-
-Heading:
-
-From alert to investigation-ready case.
-
-12 — REPORT GENERATION
-
-Create:
-
-ReportSection.tsx
-
-Add this component even though it was not listed initially.
-
-Show a document preview.
-
-Title:
-
-INVESTIGATION SUMMARY
-
-Case:
-FC-2026-00421
-
-Risk:
-HIGH
-
-Recommendation:
-ESCALATE
-
-Sections:
-
-Executive Findings
+```text
 Evidence
-Counter-Evidence
-Risk Analysis
+   +
+Risk
+   +
+Graph
+   +
+Compliance
+   +
+XAI
+   ↓
+AI Investigation
+```
+
+### Output
+
+```text
+Risk Assessment
+
+Key Findings
+
+Supporting Evidence
+
+Counter Evidence
+
 Regulatory Implications
+
 Recommended Actions
 
-Bottom buttons:
+Questions for Analyst
 
-Generate PDF
-Generate STR Draft
+Confidence
 
-Add small text:
-
-AI drafts. Structured templates preserve traceability.
-
-13 — HUMAN DECISION SECTION
-
-Create:
-
-HumanDecisionSection.tsx
-
-This should be visually important.
-
-Use dark background.
-
-Headline:
-
-AI investigates. Humans decide.
-
-Show:
-
-AI DETECTS
-
-↓
-
-RISK + EVIDENCE
-
-↓
-
-AI RECOMMENDATION
-
-↓
-
-HUMAN ANALYST
-
-↓
-
-ALLOW
-VERIFY
-ESCALATE
-
-Add a prominent:
-
-KILL SWITCH
-
-MANUAL OVERRIDE ENABLED
-
-Then explain:
-
-Safe Flow is designed to support investigators, not replace authorized decision-makers.
-
-Do not claim the AI autonomously blocks accounts.
-
-14 — THREAT WATCH
-
-Create:
-
-ThreatWatch.tsx
-
-This is optional but useful for the homepage.
-
-Headline:
-
-Financial Crime Intelligence
-
-Create 3 clean news/intelligence cards.
-
-Categories:
-
-Fraud Pattern
-Regulatory Update
-Threat Intelligence
-
-Each card:
-
-Category
-Headline
-Date
-Short description
-Read More
-
-IMPORTANT:
-
-Do not fabricate current news.
-
-Use mock data during development and clearly structure the component so real news/API data can later be connected.
-
-This section should be secondary to the investigator platform.
-
-15 — FAQ
-
-Create:
-
-FAQSection.tsx
-
-Use accordion style similar to the Wishpay reference.
-
-Questions:
-
-What is Safe Flow?
-
-Who is Safe Flow designed for?
-
-How does the Digital Investigator work?
-
-Does the AI make the final financial decision?
-
-How does Safe Flow explain a risk score?
-
-How does regulatory RAG work?
-
-What types of reports can be generated?
-
-Can Safe Flow integrate with banking systems?
-
-Use concise answers based on the actual architecture.
-
-Do not invent capabilities that are not implemented.
-
-16 — FINAL CTA
-
-Create:
-
-FinalCTA.tsx
-
-Use deep purple background.
-
-Large centered headline:
-
-Turn alerts into investigations.
-
-Supporting text:
-
-Give investigators the evidence, intelligence and explanations they need to make informed decisions.
-
-Primary CTA:
-
-Launch Investigator
-
-Secondary:
-
-View Architecture
-
-Add subtle abstract transaction-network graphics behind the CTA.
-
-17 — FOOTER
-
-Create:
-
-Footer.tsx
-
-Professional institutional footer.
-
-Columns:
-
-PLATFORM
-Investigator
-Risk Intelligence
-Graph Analysis
-Compliance
-Reports
-
-RESOURCES
-Documentation
-Architecture
-Research
-FAQ
-
-COMPANY
-About
-Team
-Contact
-
-LEGAL
-Privacy
-Security
-Terms
-
-Bottom:
-
-Safe Flow
-
-Digital Investigator for Financial Crime Intelligence
-
-Add:
-
-© 2026 Safe Flow
-
-Do not add fake government seals, certifications, partners or compliance badges.
-
-INTERACTION DESIGN
-
-Implement subtle interactions:
-
-Navbar transitions on scroll
-
-Button hover elevation
-
-Card hover border glow
-
-Graph node pulse
-
-Risk score number animation
-
-Section reveal on scroll
-
-Timeline progressive reveal
-
-FAQ accordion
-
-Mobile menu animation
-
-CTA hover effects
-
-Keep animations professional.
-
-Avoid:
-
-excessive particle effects
-
-spinning 3D objects everywhere
-
-neon cyberpunk effects
-
-aggressive parallax
-
-excessive blur
-
-excessive glassmorphism
-
-The website should feel trustworthy enough for a bank or regulatory organization.
-
-RESPONSIVE DESIGN
-
-Desktop:
-1200–1440px primary experience.
-
-Tablet:
-768–1199px.
-
-Mobile:
-320–767px.
-
-On mobile:
-
-stack all cards
-
-collapse architecture diagram vertically
-
-simplify graph visualization
-
-preserve hero hierarchy
-
-keep CTAs accessible
-
-avoid horizontal overflow
-
-convert navigation to hamburger
-
-reduce decorative elements
-
-ACCESSIBILITY
-
-Implement:
-
-semantic HTML
-
-keyboard navigation
-
-visible focus states
-
-sufficient contrast
-
-aria labels where required
-
-accessible accordions
-
-reduced-motion support
-
-readable typography
-
-IMPORTANT PRODUCT ACCURACY RULES
-
-The website must represent the actual Safe Flow architecture.
-
-The system:
-
-receives suspicious alerts/transaction data
-
-investigates cases
-
-uses specialized agents
-
-calculates risk
-
-analyzes transaction relationships
-
-uses explainability
-
-retrieves regulatory context through RAG
-
-generates investigation reports
-
-supports STR/CTR/FMR-style reporting workflows
-
-keeps humans in the decision loop
-
-maintains audit trails
-
-The system does NOT:
-
-replace a bank's core banking system
-
-autonomously freeze accounts
-
-claim official RBI approval
-
-claim official NPCI certification
-
-claim real-time bank integration unless implemented
-
-fabricate accuracy statistics
-
-fabricate partnerships
-
-fabricate current fraud news
-
-Use synthetic/mock data for the prototype.
-
-CODE QUALITY
-
-Use reusable components.
-
-Avoid giant components.
-
-Keep data separate from presentation.
-
-Create mock data files separately.
-
-Use TypeScript interfaces for:
-
-Case
-RiskScore
-Evidence
-Agent
-RegulatorySource
-InvestigationReport
-ThreatItem
-
-Use clean naming.
-
-Keep animations and styling reusable.
-
-Do not hardcode repeated UI structures unnecessarily.
-
-FINAL VISUAL GOAL
-
-The final website should feel like:
-
-A government-backed financial intelligence platform from 2030, but designed with the cleanliness of a premium fintech SaaS product.
-
-Reference visual hierarchy:
-
-Wishpay's:
-Hero
-→ Strategic section
-→ Feature cards
-→ Dark feature section
-→ Pricing/utility section
-→ FAQ
-→ CTA
-
-Transform into:
-
-Horizon:
-Hero
-→ Problem
-→ Investigation capabilities
-→ Multi-agent architecture
-→ Risk intelligence
-→ Explainability
-→ Compliance
-→ Investigation flow
-→ Reports
-→ Human decision
-→ Threat intelligence
-→ FAQ
-→ CTA
-
-The final result must be:
-
-Professional
-Minimal
-Institutional
-Trustworthy
-Modern
-Government-oriented
-Fintech-grade
-AI-powered without looking gimmicky
-
-Do not make it look like a generic AI landing page.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/d44a6d7e-4d5e-40db-966a-15b379fd96e8).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+Sources
 ```
+
+The source architecture's LLM contract requires structured output, separation of facts/model signals/inference/recommendation, source references for regulatory statements and an explicit insufficient-evidence state.
+
+---
+
+# Phase 10 — Human Decision & Approval
+
+### Objective
+
+Keep the investigator and manager in control.
+
+```text
+AI Recommendation
+        ↓
+Human Investigator
+        ↓
+┌──────────┬───────────┬──────────────┐
+│          │           │
+Approve   Escalate   Request Evidence
+        ↓
+Manager Approval
+        ↓
+Final Decision
+```
+
+### Features
+
+* [ ] Recommendation panel
+* [ ] Approve
+* [ ] Reject
+* [ ] Escalate
+* [ ] Request evidence
+* [ ] Manager approval
+* [ ] Maker-checker
+* [ ] Kill switch
+* [ ] Decision history
+
+The architecture explicitly requires human review and maker-checker approval for material actions.
+
+---
+
+# Phase 11 — Audit & Governance
+
+### Objective
+
+Record every important system and human action.
+
+```text
+Alert Created
+      ↓
+Case Created
+      ↓
+Agent Analysis
+      ↓
+Risk Generated
+      ↓
+AI Recommendation
+      ↓
+Analyst Review
+      ↓
+Manager Decision
+      ↓
+Case Closed
+```
+
+### Audit Information
+
+```text
+Who
+What
+When
+Action
+Model Version
+Evidence Version
+Decision
+```
+
+The architecture calls for immutable/tamper-evident audit trails and model decision history.
+
+---
+
+# Phase 12 — Testing, Security & Guardrails
+
+### Objective
+
+Make the system safe and demo-ready.
+
+### Testing
+
+* [ ] Frontend tests
+* [ ] Backend tests
+* [ ] API tests
+* [ ] Agent tests
+* [ ] ML evaluation
+* [ ] RAG evaluation
+* [ ] End-to-end testing
+
+### Guardrails
+
+* [ ] LLM hallucination protection
+* [ ] RAG citation validation
+* [ ] Prompt injection testing
+* [ ] Missing evidence handling
+* [ ] Insufficient evidence response
+* [ ] RBAC
+* [ ] Human approval
+* [ ] Kill switch
+* [ ] Structured JSON validation
+* [ ] Audit logging
+
+The architecture identifies hallucination, prompt injection, agent coordination failure, false positives, data leakage and unauthorized actions as key failure modes.
+
+---
+
+# Phase 13 — Integration & Deployment
+
+### Objective
+
+Move from development environment to a working deployed demo.
+
+### Frontend
+
+```text
+Vercel
+```
+
+### Backend
+
+```text
+Railway / Render
+```
+
+### Tasks
+
+* [ ] Connect frontend to real API
+* [ ] Remove unnecessary mock data
+* [ ] Configure environment variables
+* [ ] Deploy frontend
+* [ ] Deploy backend
+* [ ] Configure CORS
+* [ ] Test production APIs
+* [ ] Test authentication
+* [ ] Test complete investigation flow
+
+The implementation plan specifically recommends deploying the frontend and backend before the final polish period rather than waiting until the end.
+
+---
+
+# Phase 14 — Final Demo & Hackathon Preparation
+
+### Objective
+
+Create a reliable end-to-end demonstration.
+
+### Demo Cases
+
+#### Case 1 — Clear Fraud
+
+```text
+Mule Account
++
+Fan-out Pattern
++
+High Risk
++
+AI Investigation
++
+STR Draft
+```
+
+#### Case 2 — False Positive
+
+```text
+High-volume legitimate merchant
+        ↓
+System investigates
+        ↓
+Counter-evidence
+        ↓
+Case dismissed
+```
+
+#### Case 3 — Compliance Investigation
+
+```text
+Suspicious Transaction
+        ↓
+RAG
+        ↓
+Regulatory Citation
+        ↓
+AI Recommendation
+        ↓
+Human Approval
+        ↓
+Audit Trail
+```
+
+### Final Preparation
+
+* [ ] Demo script
+* [ ] Pitch deck
+* [ ] Architecture diagram
+* [ ] Product screenshots
+* [ ] Backup screenshots
+* [ ] Backup demo video
+* [ ] Judge Q&A
+* [ ] Production URL verification
+* [ ] Full-team rehearsal
+
+---
+
+# 📁 Repository Structure
+
+```text
+smart-horizon/
+│
+├── README.md
+├── .gitignore
+├── .env.example
+├── docker-compose.yml
+│
+├── docs/
+│   ├── implementation-plan.md
+│   ├── architecture.md
+│   ├── api-contract.md
+│   ├── evidence-schema.json
+│   ├── database-schema.md
+│   ├── user-flow.md
+│   ├── uiux-guidelines.md
+│   └── demo-script.md
+│
+├── frontend/
+│   ├── package.json
+│   ├── vite.config.ts
+│   ├── tsconfig.json
+│   │
+│   ├── public/
+│   │   ├── main_logo.png
+│   │   ├── favicon.ico
+│   │   └── images/
+│   │
+│   └── src/
+│       │
+│       ├── main.tsx
+│       ├── router.tsx
+│       ├── index.css
+│       │
+│       ├── assets/
+│       │   ├── images/
+│       │   ├── icons/
+│       │   └── illustrations/
+│       │
+│       ├── components/
+│       │   ├── ui/
+│       │   ├── layout/
+│       │   ├── landing/
+│       │   ├── auth/
+│       │   ├── dashboard/
+│       │   ├── cases/
+│       │   ├── investigation/
+│       │   ├── reports/
+│       │   ├── approval/
+│       │   ├── audit/
+│       │   └── common/
+│       │
+│       ├── pages/
+│       │   ├── Landing.tsx
+│       │   ├── auth/
+│       │   └── dashboard/
+│       │
+│       ├── hooks/
+│       ├── services/
+│       ├── store/
+│       ├── types/
+│       ├── data/
+│       └── utils/
+│
+├── backend/
+│   ├── requirements.txt
+│   ├── main.py
+│   │
+│   └── app/
+│       ├── api/
+│       ├── agents/
+│       ├── ml/
+│       ├── graph/
+│       ├── rag/
+│       ├── llm/
+│       ├── reports/
+│       ├── database/
+│       ├── services/
+│       ├── security/
+│       └── utils/
+│
+├── data/
+│   ├── synthetic/
+│   ├── regulatory/
+│   │   ├── RBI/
+│   │   ├── NPCI/
+│   │   ├── PMLA/
+│   │   ├── FATF/
+│   │   └── FIU_IND/
+│   └── processed/
+│
+├── models/
+│   ├── xgboost/
+│   ├── random_forest/
+│   ├── anomaly/
+│   └── explainability/
+│
+├── tests/
+│   ├── frontend/
+│   ├── backend/
+│   ├── agents/
+│   ├── ml/
+│   ├── rag/
+│   └── integration/
+│
+└── deployment/
+    ├── vercel/
+    ├── railway/
+    └── docker/
+```
+
+---
+
+# 👥 Team Responsibilities
+
+| Member   | Role          | Primary Area                                       |
+| -------- | ------------- | -------------------------------------------------- |
+| Member 1 | Frontend / UI | `frontend/src/components`                          |
+| Member 2 | Frontend / UX | `frontend/src/pages`, `landing`, `auth`, `reports` |
+| Member 3 | Backend       | `backend/app/api`, `database`, `services`          |
+| Member 4 | ML / Graph    | `backend/app/ml`, `graph`                          |
+| Member 5 | AI / Agents   | `backend/app/agents`, `llm`, `rag`                 |
+
+---
+
+# 🏆 Hackathon Priority
+
+Not every architecture component has equal priority.
+
+## P0 — Must Have
+
+* [ ] Multi-agent orchestration
+* [ ] Risk scoring
+* [ ] At least one trained ML model
+* [ ] Transaction graph
+* [ ] RAG
+* [ ] XAI / SHAP
+* [ ] LLM investigation
+* [ ] Case summary
+* [ ] Investigator dashboard
+* [ ] Case queue
+
+## P1 — Should Have
+
+* [ ] Timeline
+* [ ] Audit reporting
+* [ ] STR draft
+* [ ] Geo-velocity
+* [ ] Velocity analysis
+
+## P2 — If Time Allows
+
+* [ ] IP enrichment
+* [ ] Device enrichment
+* [ ] Knowledge graph expansion
+
+## Future Scope
+
+* [ ] Real behavioral analytics
+* [ ] Real device fingerprinting
+* [ ] Consortium device reputation
+* [ ] GNN-based fraud-ring detection
+* [ ] Advanced behavioral models
+
+This prioritization follows the uploaded architecture's P0/P1/P2/future scope rather than treating every possible feature as mandatory for the hackathon.
+
+---
+
+# 🔄 Final End-to-End Workflow
+
+```text
+                SUSPICIOUS TRANSACTION
+                         │
+                         ▼
+                    ALERT INPUT
+                         │
+                         ▼
+                    CASE CREATED
+                         │
+                         ▼
+                    RISK PRIORITY
+                         │
+                         ▼
+                  ORCHESTRATOR
+                         │
+          ┌──────────────┼──────────────┐
+          ▼              ▼              ▼
+       DATA            RISK         COMPLIANCE
+       AGENT           AGENT           AGENT
+          │              │              │
+          └──────────────┼──────────────┘
+                         ▼
+                  EVIDENCE PACKAGE
+                         │
+                ┌────────┴────────┐
+                ▼                 ▼
+              XAI                 RAG
+                │                 │
+                └────────┬────────┘
+                         ▼
+                  AI INVESTIGATION
+                         │
+                         ▼
+                    CASE REPORT
+                         │
+                         ▼
+                  HUMAN REVIEW
+                         │
+              ┌──────────┼──────────┐
+              ▼          ▼          ▼
+           APPROVE    ESCALATE    REQUEST
+              │
+              ▼
+         MANAGER REVIEW
+              │
+              ▼
+          FINAL ACTION
+              │
+              ▼
+          AUDIT TRAIL
+              │
+              ▼
+          CASE CLOSED
+```
+
+## 📌 Core Principle
+
+> **Smart Horizon does not replace the investigator. It gives the investigator the evidence, intelligence, explanation and regulatory context required to make a faster and more informed decision.**
+
+The architecture's central principle is therefore:
+
+**AI recommends → Human decides → System documents.**
